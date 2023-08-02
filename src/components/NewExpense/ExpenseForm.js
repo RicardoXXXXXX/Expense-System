@@ -1,7 +1,8 @@
 import "./ExpenseForm.css";
 import React, { useState } from "react";
 
-const ExpenseForm = () => {
+//Here the "props" is the pointer of onSubmmitExpenseData() which is defined in NewExpense.js.
+const ExpenseForm = (props) => {
   //  Example of using one state to manage inputs
   // const [userInput, setUserInput] = useState({
   //   inputTitle: "",
@@ -22,28 +23,66 @@ const ExpenseForm = () => {
   // };
 
   //Use multi-state is easier
+  //Set states
   const [userInputTitle, setTitle] = useState("");
   const [userInputAmount, setAmount] = useState("");
   const [userInputDate, setDate] = useState("");
-
+  const [titleValidity, setTitleVilidity] = useState("(Invalid Title)"); //State to check input validility
   //event automatically receives the input
   const titleChangeHandler = (event) => {
-    setTitle(event.target.value);
+    let title = event.target.value;
+    setTitle(title);
+
+    //Check input title's validility
+    if (title.trim().length < 1) {
+      setTitleVilidity("(Invalid Title)");
+    } else {
+      setTitleVilidity("(Valid Title)");
+    }
   };
 
   const amountChangeHandler = (event) => {
     setAmount(event.target.value);
   };
+
+  //Submit handler
+  const submitHandler = (event) => {
+    //Prevent auto-submitting when clicking the "submit" button, so this function can do some management.
+    event.preventDefault();
+    //Store submitted data
+    const expenseData = {
+      title: userInputTitle,
+      amount: userInputAmount,
+      date: userInputDate,
+    };
+    //Add new expense
+    props.onSubmmitExpenseData(expenseData);
+
+    //Clear prev submission
+    setTitle("");
+    setAmount("");
+    setDate("");
+  };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <label>Title {titleValidity}</label>
+          <input
+            type="text"
+            /* make sure the value in the input box always matches the current state, i.e. make box able to be cleared after submitting */
+            value={userInputTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" min="0" onChange={amountChangeHandler} />
+          <input
+            type="number"
+            value={userInputAmount}
+            min="0"
+            onChange={amountChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
@@ -51,6 +90,7 @@ const ExpenseForm = () => {
             type="date"
             min="2023-07-30"
             max="2100-01-01"
+            value={userInputDate}
             onChange={(event) => {
               setDate(event.target.value);
             }}

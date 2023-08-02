@@ -2,10 +2,21 @@ import React from "react";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
-const NewExpense = () => {
+//Here the "props" is the pointer of addExpenseHandler() which is defined in App.js.
+const NewExpense = (prop) => {
+  const submitExpenseHandler = (inputExpenseData) => {
+    const expenseData = {
+      ...inputExpenseData,
+      id: Math.floor(Math.random() * 1000).toString(), //Generate a new id which is <1000.
+    };
+
+    prop.onAddExpense(expenseData);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      {/* Pass the pointer of onSubmmitExpenseData() to the ExpenseForm component */}
+      <ExpenseForm onSubmmitExpenseData={submitExpenseHandler} />
     </div>
   );
 };
