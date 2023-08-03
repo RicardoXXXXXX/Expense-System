@@ -3,9 +3,14 @@ import ExpenseItem from "./ExpenseItem";
 import Card from "./Card";
 import ExpensesFilter from "./ExpensesFilter";
 const Expenses = (props) => {
+  //Add filter function
+  const filterChangeHandler = (filter) => {
+    console.log(filter);
+  };
+
   return (
     <Card className="expenses">
-      <ExpensesFilter />
+      <ExpensesFilter onFilterChange={filterChangeHandler} />
       <ExpenseItem
         title={props.expenses[0].title}
         amount={props.expenses[0].anount}
