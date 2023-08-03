@@ -1,9 +1,11 @@
 import "./Expenses.css";
 import ExpenseItem from "./ExpenseItem";
 import Card from "./Card";
+import ExpensesFilter from "./ExpensesFilter";
 const Expenses = (props) => {
   return (
     <Card className="expenses">
+      <ExpensesFilter />
       <ExpenseItem
         title={props.expenses[0].title}
         amount={props.expenses[0].anount}
