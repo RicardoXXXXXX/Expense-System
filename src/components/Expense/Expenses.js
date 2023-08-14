@@ -19,21 +19,14 @@ const Expenses = (props) => {
         selected={FilteredYear}
         onFilterChange={filterChangeHandler}
       />
-      <ExpenseItem
-        title={props.expenses[0].title}
-        amount={props.expenses[0].anount}
-        date={props.expenses[0].date}
-      />
-      <ExpenseItem
-        title={props.expenses[1].title}
-        amount={props.expenses[1].anount}
-        date={props.expenses[1].date}
-      />
-      <ExpenseItem
-        title={props.expenses[2].title}
-        amount={props.expenses[2].anount}
-        date={props.expenses[2].date}
-      />
+      {/* Use map() to display the array of expense*/}
+      {props.expenses.map((expense) => (
+        <ExpenseItem
+          title={expense.title}
+          amount={expense.anount}
+          date={expense.date}
+        />
+      ))}
     </Card>
   );
 };
