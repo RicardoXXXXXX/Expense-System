@@ -5,7 +5,7 @@ import "./NewExpense.css";
 //Here the "props" is the pointer of addExpenseHandler() which is defined in App.js.
 const NewExpense = (prop) => {
   const submitExpenseHandler = (inputExpenseData) => {
-    const expenseData = {
+    let expenseData = {
       ...inputExpenseData,
       id: Math.floor(Math.random() * 1000).toString(), //Generate a new id which is <1000.
     };

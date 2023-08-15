@@ -53,7 +53,7 @@ const ExpenseForm = (props) => {
     const expenseData = {
       title: userInputTitle,
       amount: userInputAmount,
-      date: userInputDate,
+      date: new Date(userInputDate), //Important to use new Date(), otherwise it will be a String rather than a Date object.
     };
     //Add new expense
     props.onSubmmitExpenseData(expenseData);
@@ -73,6 +73,7 @@ const ExpenseForm = (props) => {
             /* make sure the value in the input box always matches the current state, i.e. make box able to be cleared after submitting */
             value={userInputTitle}
             onChange={titleChangeHandler}
+            required
           />
         </div>
         <div className="new-expense__control">
@@ -82,6 +83,7 @@ const ExpenseForm = (props) => {
             value={userInputAmount}
             min="0"
             onChange={amountChangeHandler}
+            required
           />
         </div>
         <div className="new-expense__control">
@@ -94,6 +96,7 @@ const ExpenseForm = (props) => {
             onChange={(event) => {
               setDate(event.target.value);
             }}
+            required
           />
         </div>
       </div>
