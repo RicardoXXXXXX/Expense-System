@@ -13,6 +13,7 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
+  //Add filter to render the expense based on the year
   const checkYear = (expense) => {
     return expense.date.getFullYear().toString() === FilteredYear;
   };
