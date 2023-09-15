@@ -70,7 +70,7 @@ const ExpenseForm = (props) => {
           <label>Title {titleValidity}</label>
           <input
             type="text"
-            /* make sure the value in the input box always matches the current state, i.e. make box able to be cleared after submitting */
+            /* make sure the value in the input box always matches the current state, e.g. make box able to be cleared after submitting */
             value={userInputTitle}
             onChange={titleChangeHandler}
             required
