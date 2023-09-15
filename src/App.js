@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 //This is for initializing the useState
 const dummy_expenses = [
-  { id: "1", title: "A", amount: 100, date: new Date(2023, 7, 28) },
+  { id: "-1", title: "Init", amount: 0, date: new Date(1000, 7, 28) },
 ];
 
 function App() {
