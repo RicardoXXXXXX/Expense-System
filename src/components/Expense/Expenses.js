@@ -22,6 +22,8 @@ const Expenses = (props) => {
       {/* Use map() to display the array of expense*/}
       {props.expenses.map((expense) => (
         <ExpenseItem
+          /* Indentify each specific item, Important for list items*/
+          key={expense.id}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}

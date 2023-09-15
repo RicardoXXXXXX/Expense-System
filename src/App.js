@@ -5,8 +5,6 @@ import React, { useState } from "react";
 //This is for initializing the useState
 const dummy_expenses = [
   { id: "1", title: "A", amount: 100, date: new Date(2023, 7, 28) },
-  { id: "2", title: "B", amount: 200, date: new Date(2023, 7, 29) },
-  { id: "3", title: "C", amount: 300, date: new Date(2023, 7, 30) },
 ];
 
 function App() {

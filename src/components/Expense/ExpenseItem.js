@@ -7,9 +7,9 @@ import React, { useState } from "react";
 const ExpenseItem = (props) => {
   //useState() Make component function renewable, can only be called in component function.
   const [title, setTitle] = useState(props.title); //title is the managed props.title, it's now renewable, every title has an independent state. setTitle is a func to set title.
-  const clickHandler = () => {
-    setTitle("Changed");
-  };
+  // const clickHandler = () => {
+  //   setTitle("Changed");
+  // };
 
   return (
     <Card className="expense-item">
@@ -18,7 +18,7 @@ const ExpenseItem = (props) => {
         <h2>{title}</h2>
         <div className="expense-item__price">{props.amount}</div>
       </div>
-      <button onClick={clickHandler}>Change Title</button>
+      {/* <button onClick={clickHandler}>Change Title</button> */}
     </Card>
   );
 };
